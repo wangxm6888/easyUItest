@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/jquery.easyui.min.js" charset="utf-8"></script>
+<!-- 样式文件 -->
+<link rel = "stylesheet" href = "../js/jquery-easyui-1.4.1/themes/default/easyui.css">
+<!-- 小图标的样式 -->
+<link rel = "stylesheet" href = "../js/jquery-easyui-1.4.1/themes/icon.css">
+<!-- 使easyUI国际化（可以显示中文） -->
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+<!-- ======= -->
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/easyloader.js"></script>
+<script type="text/javascript">
+// 	$(function(){
+// 		console.info($('#dd'));
+// 		$('#dd').dialog({modal:true});
+// 	})
+// 	==使用easyloader.js的用法
+	$(function(){
+		easyloader.load(['dialog','massager'],function(){
+			$('#dd').dialog({modal : true});
+			$.messager.alert('Warning','xiaom');
+		})
+	})
+</script>
+</head>
+<body>
+<!--     <div class = "easyui-dialog" id="dd" class="easyui-dialog" title="My Dialog" style="width:400px;height:200px;" -->
+<!--             data-options="iconCls:'icon-save',resizable:true,modal:true"> -->
+<!--         Dialog Content. -->
+<!--     </div> -->
+
+	    <div id="dd"  title="My Dialog" style="width:400px;height:200px;"
+            data-options="iconCls:'icon-save',resizable:true">
+        Dialog Content.
+    </div>
+</body>
+</html>

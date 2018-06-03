@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/jquery.easyui.min.js" charset="utf-8"></script>
+<!-- 样式文件 -->
+<link rel = "stylesheet" href = "../js/jquery-easyui-1.4.1/themes/default/easyui.css">
+<!-- 小图标的样式 -->
+<link rel = "stylesheet" href = "../js/jquery-easyui-1.4.1/themes/icon.css">
+<!-- 使easyUI国际化（可以显示中文） -->
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+<!-- ======= -->
+<script type="text/javascript" src = "../js/jquery-easyui-1.4.1/easyloader.js"></script>
+<script type="text/javascript" src = "../js/htip.js"></script>
+<script type="text/javascript">
+var loginAndRegDialog;
+$(function(){
+	loginAndRegDialog = $('#loginAndRegDialog').dialog({
+		closable:false,
+		modal:true,
+		buttons: [{text:'注册',handler:function(){
+			
+		}},{text:'登录',handler:function(){
+// 			loginInputForm.submit();
+// 			console.info(htip());
+
+
+
+ // $.ajax  方式提交
+			$.ajax({
+				type : 'post',
+				url: htip() +'/userController/use.do',
+				data:$('#loginInputForm').serialize(),
+				cache:false,
+				dataType:'json',
+				success:function(res){
+					console.info('成功');
+// 					console.info(res);
+					
+// 					if(res.state == 0)
+// 					{
+// 						$.messager.alert('标题','登录成功....');
+// 						loginAndRegDialog.dialog('close');
+// 						$.messager.show({title:'标题',msg:'登录成功'});
+// 					}
+// 					console.info(res.state);
+// 					console.info(res.message);
+					console.info(data[0].name);
+				}
+			}) 
+		}}]
+	});
+	/*
+	loginInputForm = $('#loginInputForm').form({
+		url:htip() +'/userController/use.do',
+		success: function(res){
+			console.info(res);
+			console.info('成功');
+			//res = eval('('+res+')');  //将res字符串转换成对象
+			res = $.parseJSON(res);
+			console.info(res);
+			if(res.state == 0)
+			{
+				$.messager.alert('标题','登录成功....');
+				loginAndRegDialog.dialog('close');
+				$.messager.show({title:'标题',msg:'登录成功'});
+			}
+			console.info(res.state);
+			console.info(res.message);
+			console.info(data[0].name);
+			
+		}}); */
+})
+</script>
+</head>
+<body>
+    <div id="loginAndRegDialog"  title="用户登录" style="width:250px;height:200px;"
+            data-options="resizable:true">
+     <form action="" id = "loginInputForm">
+      <table>
+      <tr>
+      <th align = "right">用户名</th><td><input name = "name" class="easyui-validatebox" data-options="required:true"></td>
+      </tr>
+       <tr>
+       	<th align = "right">密码</th><td><input name = "password" type = "password"></td>
+       </tr>
+        </table>
+        
+        </form>
+    </div>
+</body>
+</html>
